@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-
+// import { useParams }from 'react-router-dom'
 const API_KEY = 'df3682fb'
 
 export class Detail extends Component {
+    state = { movie: {} }
 
     static propTypes = {
         match: PropTypes.shape({
@@ -14,9 +15,6 @@ export class Detail extends Component {
         })
     }
 
-    state = {
-        movie: { }
-    }
     _fetchMovie({id}) {
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
             .then(res => res.json())
@@ -27,6 +25,7 @@ export class Detail extends Component {
     }
 
     componentDidMount() {
+        console.log('ComponentDidMount()')
         console.log(this.props)
         const {id} = this.props.match.params
         this._fetchMovie({id})
@@ -35,8 +34,6 @@ export class Detail extends Component {
     _goBack() {
         window.history.back()
     }
-
-
 
     render(){ 
         const { Title, Poster, Director, Actors, Metascore, Plot} = this.state.movie
@@ -47,7 +44,7 @@ export class Detail extends Component {
                 <img src={Poster} alt={Title} />
                 <strong>{Director}</strong>
                 <h3>{Actors}</h3>
-                <h4>{Metascore}</h4>
+                <span>{Metascore}</span>
                 <p>{Plot}</p>
             </div>
         )

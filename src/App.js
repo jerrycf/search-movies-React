@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
-
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
 
@@ -11,10 +10,14 @@ class App extends Component {
   render() {
       return (
       <div className="App">
-        <Switch>
-          <Route exact path='/' Component={Home} />
-          <Route path='/detail/:id' Component={Detail} />
-        </Switch>
+        {/* <Router> */}
+          <Switch>
+            {/* <Route exact={true} path='/'> <Home /> </Route> */}
+            <Route exact={true} path='/' component={Home} />
+            {/* <Route path='/detail/:id'> <Detail /></Route> */}
+            <Route path='/detail/:id' component={Detail} />
+          </Switch>
+        {/* </Router> */}
       </div>
     )
   }
