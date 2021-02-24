@@ -36,6 +36,8 @@ export class Detail extends Component {
         window.history.back()
     }
 
+
+
     render(){ 
         const { Title, Poster, Director, Actors, Metascore, Plot} = this.state.movie
         return(
