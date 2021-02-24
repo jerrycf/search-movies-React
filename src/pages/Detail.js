@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { ButtonBackToHome } from '../components/ButtonBackToHome'
 // import { useParams }from 'react-router-dom'
 const API_KEY = 'df3682fb'
 
@@ -38,14 +39,24 @@ export class Detail extends Component {
     render(){ 
         const { Title, Poster, Director, Actors, Metascore, Plot} = this.state.movie
         return(
-            <div>
-                <button onClick={this._goBack}> HOME!</button>
-                <h1>{Title}</h1>
-                <img src={Poster} alt={Title} />
-                <strong>{Director}</strong>
-                <h3>{Actors}</h3>
-                <span>{Metascore}</span>
-                <p>{Plot}</p>
+            <div className='box'>
+                <article className='media'>
+                    <div className='media-left'>
+                        <figure>
+                        <img src={Poster} alt={Title} />
+                        </figure>
+                    </div>
+                    <div className='media-content'>
+                        <div className='content is-medium'>
+                            <h1>{Title}</h1>
+                            <strong>Director: {Director}</strong>
+                            <h3>Main actors: {Actors}</h3>
+                            <span>MetaScore: {Metascore}</span>
+                            <p>Description: {Plot}</p>
+                        </div>    
+                    </div>
+                </article>
+                <ButtonBackToHome />
             </div>
         )
     }
